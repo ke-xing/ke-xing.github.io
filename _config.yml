@@ -12,7 +12,7 @@ title: "About Me"
 title_separator: "-"
 name: &name "Your Name"
 description: &description "personal description"
-url: https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url: https://ke-xing.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "academicpages/academicpages.github.io"
 
@@ -27,7 +27,7 @@ author:
   bio: "Undergraduate Student,BJTU"
   location: "Beijing,China"
   employer: "Beijing Jiaotong University"
-  uri: "https://ke-xing.github.io/"
+  uri: # URL
   email: "22281232@bjtu.edu.cn"
 
   # Academic websites
