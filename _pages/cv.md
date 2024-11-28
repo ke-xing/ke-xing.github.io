@@ -19,6 +19,11 @@ Research Experience
   * Collaborator: [Prof. Rui Wang](https://scholar.google.com/citations?user=rSBGefoAAAAJ), BJTU
   * Research Content: Classification and functional prediction of GH29 family protein sequences based on BERT Model
   
+* Computer vision: Image Distortion Correction, 2024
+  * Advised by [Lang Nie](https://nie-lang.github.io/), BJTU
+  * Collaborator: Bowen Nie, BJTU \| Jingwen Chen, BJTU 
+  * Research Content: Wide-angle Image Distortion Correction Based on Diffusion Model
+  
 * Computer vision: 3D & 4D scene Generation & Editing, 2024
   * Advised by [Prof. Yunchao Wei](https://scholar.google.com/citations?user=qL9Csv0AAAAJ), BJTU
   * Collaborator: [Yuyang Yin](https://yuyangyin.github.io/), BJTU \| [Haoye Dong](https://www.haoyed.com/), CMU
