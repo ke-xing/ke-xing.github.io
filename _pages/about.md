@@ -9,7 +9,7 @@ redirect_from:
 
 I'm a third year undergraduate student from [School of Computer Science & Technology](https://cs.bjtu.edu.cn/), [Beijing Jiaotong University](https://www.bjtu.edu.cn/). My research interest includes computer vision, computer graphics, machine learning, and computational photography.
 
-I am very fortunate to be advised by [Prof. Yunchao Wei](https://faculty.bjtu.edu.cn/9763/) of [Wei Lab](https://weiyc.github.io/opening.html) from [School of Computer Science & Technology](https://cs.bjtu.edu.cn/), [Beijing Jiaotong University](https://www.bjtu.edu.cn/).
+I am very fortunate to be advised by [Prof. Yunchao Wei](https://scholar.google.com/citations?user=qL9Csv0AAAAJ) of [Wei Lab](https://weiyc.github.io/opening.html) from [School of Computer Science & Technology](https://cs.bjtu.edu.cn/), [Beijing Jiaotong University](https://www.bjtu.edu.cn/).
 
 You can find my CV here: [KeXing's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
 
