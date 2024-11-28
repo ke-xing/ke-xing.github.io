@@ -24,19 +24,19 @@ author:
   avatar: "profile.png"
   name: "Ke Xing"
   pronouns: # example: "she/her"
-  bio: "Short biography for the left-hand sidebar"
-  location: "Beijing, China"
+  bio: "Undergraduate Student from School of Computer Science & Technology,Beijing Jiaotong University"
+  location: "Beijing,China"
   employer: "Beijing Jiaotong University"
   uri: # URL
   email: "22281232@bjtu.edu.cn"
 
   # Academic websites
   arxiv: # URL - Update with the correct link to your profile
-  googlescholar: "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar: "https://scholar.google.com/citations?user=aM94oHwAAAAJ"
   impactstory: # URL
-  orcid: "http://orcid.org/yourorcidurl"
+  orcid: #"http://orcid.org/yourorcidurl"
   semantic: # URL
-  pubmed: "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed: #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate: # URL
   scopus: # URL
 
@@ -44,12 +44,12 @@ author:
   bitbucket: # Username - Update with your username on the site
   codepen: # Username
   dribbble: # Username
-  github: "academicpages"
+  github: "https://github.com/ke-xing"
   kaggle: # Username
   stackoverflow: # User number or user number and name (i.e., use "1" or "1/jeff-atwood")
 
   # Social media
-  bluesky: "bsky.app" # Replace this with you Bluesky username
+  #bluesky: "bsky.app" # Replace this with you Bluesky username
   facebook: # Username
   flickr: # Username
   foursquare: # Username
