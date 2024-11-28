@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale: "en-US"
-title: "Ke Xing"
+title: "About Me"
 title_separator: "-"
 name: &name "Your Name"
 description: &description "personal description"
@@ -24,7 +24,7 @@ author:
   avatar: "profile.png"
   name: "Ke Xing"
   pronouns: # example: "she/her"
-  bio: "Undergraduate Student from School of Computer Science & Technology,Beijing Jiaotong University"
+  bio: "Undergraduate Student,BJTU"
   location: "Beijing,China"
   employer: "Beijing Jiaotong University"
   uri: # URL
