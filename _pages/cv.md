@@ -16,7 +16,7 @@ Research Experience
 ======
 * Bioinformatics: Protein sequence Classification, 2023
   * Advised by [Prof. Rui Wang](https://scholar.google.com/citations?user=rSBGefoAAAAJ), BJTU 
-  * Collaborator: [Prof. Rui Wang](https://scholar.google.com/citations?user=rSBGefoAAAAJ)
+  * Collaborator: [Prof. Rui Wang](https://scholar.google.com/citations?user=rSBGefoAAAAJ), BJTU
   * Research Content: Classification and functional prediction of GH29 family protein sequences based on BERT Model
   
 * Computer vision: 3D & 4D scene Generation & Editing, 2024
