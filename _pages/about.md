@@ -14,5 +14,6 @@ My research interest includes 3D&4D computer vision, AIGC and Embodied AI. With 
 I am very fortunate to be advised by [Prof. Yunchao Wei](https://scholar.google.com/citations?user=qL9Csv0AAAAJ) of [Wei Lab](https://weiyc.github.io/opening.html) from School of Computer Science & Technology, Beijing Jiaotong University.
 
 You can find my CV here: [Ke Xing's Curriculum Vitae](https://ke-xing.github.io/cv/).
+
 Email: 22281232_at_bjtu.edu.cn
 
