@@ -52,6 +52,7 @@ Skills
 * CET-4 612
 * CET-6 501
 * IELTS In preparation
+* Full stack website development experience
 
 
   
