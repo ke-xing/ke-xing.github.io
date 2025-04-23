@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: "Ke Xing, Hanwen Liang, Dejia Xu, Yuyang Yin, Konstantinos N. Plataniotis, Yao Zhao, Yunchao Wei ",
             venue: "ACMMM 2025 Conference Submission",
             type: "conference",
+            image:"./assets/images/tiP4GEN.png",
             // abstract: "In this work, we demonstrate a novel approach to...",
             links: [
                 // { icon: "fas fa-file-pdf", text: "PDF", url: "papers/paper2.pdf" },
@@ -20,8 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: "Wenbo Nie, Lang Nie, Chunyu Lin, Jingwen Chen, KeXing, JiYuan Wang, Yao Zhao ",
             venue: "ICCV 2025 Conference Submission",
             type: "conference",
+            image:"./assets/images/STDA.png",
+            
             //abstract: "This workshop paper explores preliminary results on...",
             links: [
+                { icon: "fas fa-external-link-alt", text: "arXiv", url: "https://arxiv.org/abs/2504.00401" },
                 // { icon: "fas fa-file-pdf", text: "PDF", url: "papers/workshop1.pdf" },
                 // { icon: "fas fa-external-link-alt", text: "Publisher", url: "https://doi.org/example-workshop" }
             ]
@@ -31,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             authors: "Ana Martínez Gascueña, Haiyang Wu, Rui Wang, C David Owen, Pedro J Hernando, Serena Monaco, Matthew Penner, Ke Xing, Gwenaelle Le Gall, Richard Gardner, Didier Ndeh, Paulina A Urbanowicz, Daniel IR Spencer, Martin Walsh, Jesus Angulo, Nathalie Juge",
             venue: "Communications Chemistry, 2024",
             type: "journal",
+            image:"./assets/images/CommChem.png",
             //abstract: "This paper presents groundbreaking research in the field of...",
             links: [
                 //{ icon: "fas fa-file-pdf", text: "PDF", url: "papers/paper1.pdf" },
@@ -50,6 +55,18 @@ document.addEventListener('DOMContentLoaded', function() {
         publications.forEach(pub => {
             const pubElement = document.createElement('div');
             pubElement.className = 'publication';
+
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'publication-image';
+            if (pub.image) {
+                const image = document.createElement('img');
+                image.src = pub.image;
+                image.alt = pub.title;
+                imageContainer.appendChild(image);
+            }
+
+            const pubContainer = document.createElement('div');
+            pubContainer.className = 'publication-content';
 
             const titleElement = document.createElement('h3');
             titleElement.className = 'publication-title';
@@ -81,10 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 linksElement.appendChild(linkElement);
             });
 
-            pubElement.appendChild(titleElement);
-            pubElement.appendChild(authorsElement);
-            pubElement.appendChild(venueElement);
-            pubElement.appendChild(linksElement);
+            pubElement.appendChild(imageContainer);
+            pubContainer.appendChild(titleElement);
+            pubContainer.appendChild(authorsElement);
+            pubContainer.appendChild(venueElement);
+            pubContainer.appendChild(linksElement);
+            pubElement.appendChild(pubContainer);
 
             container.appendChild(pubElement);
         });

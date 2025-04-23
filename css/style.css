@@ -242,12 +242,33 @@ section p {
 }
 
 .publication {
+  display: flex;
+  align-items: center; /* 确保内容垂直居中 */
   background-color: var(--card-bg);
   padding: 20px;
   margin: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publication-image {
+  width: 150px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center; /* 确保图片垂直居中 */
+  justify-content: center; /* 确保图片水平居中 */
+}
+
+.publication-image img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.publication-content {
+  flex: 1;
 }
 
 .publication:hover {
