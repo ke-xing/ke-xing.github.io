@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching - Academic Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to teaching page */
+        .course-filters {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-color);
+        }
+        
+        .semester-heading {
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            color: var(--text-color-muted);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .back-to-home {
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        
+        .back-to-home i {
+            margin-right: 0.5rem;
+        }
+        
+        .course-materials {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+        }
+        
+        .material-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .material-item a {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .material-item i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主题切换按钮 -->
+    <div class="theme-switch" id="theme-switch">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="profile">
+                <div class="profile-image">
+                    <img src="../assets/images/profile.jpg" alt="Profile Picture">
+                </div>
+                <div class="profile-content">
+                    <h1>Your Name</h1>
+                    <h2>Position • Department • University</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#research">Research</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#teaching">Teaching</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <a href="../index.html" class="back-to-home"><i class="fas fa-arrow-left"></i>Back to Home</a>
+            
+            <h2>Teaching</h2>
+            
+            <div class="course-filters">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="undergraduate">Undergraduate</button>
+                <button class="filter-btn" data-filter="graduate">Graduate</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+            </div>
+            
+            <div id="courses-container">
+                <!-- Courses will be loaded from JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample courses data by semester
+            // In a real implementation, this could be loaded from a JSON file
+            const coursesBySemester = {
+                "Fall 2023": [
+                    {
+                        title: "Course Title 1",
+                        code: "CS 101",
+                        type: "undergraduate",
+                        description: "An introductory course covering fundamental concepts in computer science, including algorithms, data structures, and basic programming principles.",
+                        schedule: "Monday, Wednesday, Friday 10:00 AM - 11:30 AM",
+                        location: "Building A, Room 101",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Syllabus", url: "syllabi/course1_syllabus.pdf" },
+                            { icon: "fas fa-book", text: "Course Notes", url: "notes/course1_notes.pdf" },
+                            { icon: "fab fa-github", text: "Code Repository", url: "https://github.com/yourusername/course1" }
+                        ]
+                    },
+                    {
+                        title: "Advanced Topics in Machine Learning",
+                        code: "CS 501",
+                        type: "graduate",
+                        description: "A graduate-level course exploring cutting-edge techniques in machine learning, with a focus on deep learning architectures and applications.",
+                        schedule: "Tuesday, Thursday 2:00 PM - 4:00 PM",
+                        location: "Building B, Room 205",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Syllabus", url: "syllabi/cs501_syllabus.pdf" },
+                            { icon: "fas fa-laptop-code", text: "Assignments", url: "assignments/cs501/" },
+                            { icon: "fab fa-github", text: "Code Repository", url: "https://github.com/yourusername/cs501" }
+                        ]
+                    }
+                ],
+                "Spring 2023": [
+                    {
+                        title: "Course Title 2",
+                        code: "CS 202",
+                        type: "undergraduate",
+                        description: "An advanced course exploring the principles of software engineering, including design patterns, testing methodologies, and project management.",
+                        schedule: "Tuesday, Thursday 11:00 AM - 12:30 PM",
+                        location: "Building C, Room 302",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Syllabus", url: "syllabi/course2_syllabus.pdf" },
+                            { icon: "fas fa-tasks", text: "Projects", url: "projects/course2/" }
+                        ]
+                    },
+                    {
+                        title: "Research Methods Workshop",
+                        code: "CS 600",
+                        type: "workshop",
+                        description: "A workshop series on research methodologies in computer science, covering literature review, experimental design, and academic writing.",
+                        schedule: "Friday 1:00 PM - 4:00 PM",
+                        location: "Research Lab, Building D",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Workshop Materials", url: "workshops/research_methods.pdf" },
+                            { icon: "fas fa-external-link-alt", text: "Resources", url: "resources/research_resources.html" }
+                        ]
+                    }
+                ],
+                "Fall 2022": [
+                    {
+                        title: "Course Title 3",
+                        code: "CS 303",
+                        type: "undergraduate",
+                        description: "A specialized course focusing on recent developments in artificial intelligence and its applications in various domains.",
+                        schedule: "Monday, Wednesday 3:00 PM - 4:30 PM",
+                        location: "Building A, Room 105",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Syllabus", url: "syllabi/course3_syllabus.pdf" },
+                            { icon: "fas fa-book", text: "Lecture Notes", url: "notes/course3/" }
+                        ]
+                    },
+                    {
+                        title: "Advanced Algorithms",
+                        code: "CS 405",
+                        type: "graduate",
+                        description: "A comprehensive study of advanced algorithmic techniques, complexity analysis, and optimization methods for solving computational problems.",
+                        schedule: "Tuesday, Thursday 9:00 AM - 11:00 AM",
+                        location: "Building B, Room 210",
+                        materials: [
+                            { icon: "fas fa-file-alt", text: "Syllabus", url: "syllabi/cs405_syllabus.pdf" },
+                            { icon: "fas fa-code", text: "Code Examples", url: "code/cs405/" }
+                        ]
+                    }
+                ]
+            };
+
+            // Function to render courses by semester
+            function renderCoursesBySemester(coursesBySemester, containerId, filter = 'all') {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                // Clear container
+                container.innerHTML = '';
+                
+                // Sort semesters in chronological order (most recent first)
+                // This is a simplified approach - in a real implementation, you might want to parse the semester strings
+                const semesters = Object.keys(coursesBySemester).sort().reverse();
+                
+                semesters.forEach(semester => {
+                    // Filter courses by type if needed
+                    const semesterCourses = coursesBySemester[semester].filter(course => {
+                        return filter === 'all' || course.type === filter;
+                    });
+                    
+                    // Skip semester if no courses match the filter
+                    if (semesterCourses.length === 0) return;
+                    
+                    // Create semester heading
+                    const semesterHeading = document.createElement('h3');
+                    semesterHeading.className = 'semester-heading';
+                    semesterHeading.textContent = semester;
+                    container.appendChild(semesterHeading);
+                    
+                    // Create courses list for this semester
+                    const semesterContainer = document.createElement('div');
+                    semesterContainer.className = 'course-list';
+                    
+                    semesterCourses.forEach(course => {
+                        const courseElement = document.createElement('div');
+                        courseElement.className = 'course';
+                        courseElement.dataset.type = course.type;
+
+                        const titleElement = document.createElement('h3');
+                        titleElement.className = 'course-title';
+                        titleElement.textContent = `${course.code}: ${course.title}`;
+
+                        const descriptionElement = document.createElement('p');
+                        descriptionElement.className = 'course-info';
+                        descriptionElement.textContent = course.description;
+
+                        const scheduleElement = document.createElement('p');
+                        scheduleElement.className = 'course-schedule';
+                        scheduleElement.innerHTML = `<strong>Schedule:</strong> ${course.schedule}`;
+
+                        const locationElement = document.createElement('p');
+                        locationElement.className = 'course-location';
+                        locationElement.innerHTML = `<strong>Location:</strong> ${course.location}`;
+
+                        const materialsElement = document.createElement('div');
+                        materialsElement.className = 'course-materials';
+                        
+                        const materialsTitle = document.createElement('h4');
+                        materialsTitle.textContent = 'Course Materials';
+                        materialsElement.appendChild(materialsTitle);
+
+                        course.materials.forEach(material => {
+                            const materialItem = document.createElement('div');
+                            materialItem.className = 'material-item';
+                            
+                            const linkElement = document.createElement('a');
+                            linkElement.href = material.url;
+                            linkElement.target = '_blank';
+                            linkElement.rel = 'noopener noreferrer';
+                            
+                            const iconElement = document.createElement('i');
+                            iconElement.className = material.icon;
+                            
+                            linkElement.appendChild(iconElement);
+                            linkElement.appendChild(document.createTextNode(' ' + material.text));
+                            
+                            materialItem.appendChild(linkElement);
+                            materialsElement.appendChild(materialItem);
+                        });
+
+                        courseElement.appendChild(titleElement);
+                        courseElement.appendChild(descriptionElement);
+                        courseElement.appendChild(scheduleElement);
+                        courseElement.appendChild(locationElement);
+                        courseElement.appendChild(materialsElement);
+
+                        semesterContainer.appendChild(courseElement);
+                    });
+                    
+                    container.appendChild(semesterContainer);
+                });
+            }
+
+            // Initial render
+            renderCoursesBySemester(coursesBySemester, 'courses-container');
+            
+            // Filter buttons functionality
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Get filter value and render
+                    const filter = this.dataset.filter;
+                    renderCoursesBySemester(coursesBySemester, 'courses-container', filter);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

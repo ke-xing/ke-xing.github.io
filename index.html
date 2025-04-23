@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <title>Ke Xing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 移除 Playfair Display 字体，只保留基本的无衬线字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 主题切换按钮 -->
+    <div class="theme-switch" id="theme-switch">
+        <i class="fas fa-moon"></i>
+    </div>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <div class="profile">
+                <div class="profile-image">
+                    <img src="assets/images/profile.jpg" alt="Profile Picture" id="profile-img">
+                </div>
+                <div class="profile-content">
+                    <h1>Ke Xing</h1>
+                    <h2>Bachelor's Candidate in C.S. • School of Computer Science & Technology • Beijing Jiaotong University</h2>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> 22281232@bjtu.edu.cn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/ke-xing" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                        <!-- <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a> -->
+                        <a href="assets/cv.pdf" target="_blank"><i class="fas fa-file-alt"></i> CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <main>
+        <div class="container">
+            <section id="about">
+                <h2>About Me</h2>
+                <p>I'm Ke Xing(邢柯), a third year undergraduate student majoring in CS from School of Computer Science & Technology, Beijing Jiaotong University.
+    My research interest includes 3D&4D computer vision, AIGC and Embodied AI. With the development of large language models and multimodal large models, the ability of AI is becoming more and more capable. However, limited by the training data of large models, the current ability of AI is still limited to text, pictures and audio, and the understanding and logical reasoning of the real physical world is still limited. Therefore, I hope to devote myself to improving the three-dimensional world understanding ability of AI in future research. Align the spatial information with the existing modalities. If possible, I would like to find a primitive representation of knowledge or concepts that is not limited to modalities in order to increase the intelligence awareness of AI.
+                I am very fortunate to be advised by Prof. Yunchao Wei of Wei Lab from School of Computer Science & Technology, Beijing Jiaotong University.</p>
+            </section>
+
+            <section id="research">
+                <h2>Research Interests</h2>
+                <div class="research-areas">
+                    <div class="research-area">
+                        <h3>3D Computer Vision</h3>
+
+                    </div>
+                    <div class="research-area">
+                        <h3>Embodied AI</h3>
+
+                    </div>
+                    <div class="research-area">
+                        <h3>Generative AI</h3>
+
+                    </div>
+                    <div class="research-area">
+                        <h3>Bioinformatics</h3>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="news">
+                <h2>News</h2>
+                <!-- <p class="section-links"><a href="news/index.html">View All News</a></p> -->
+                
+                <!-- <div id="news-list">
+               
+                </div> -->
+            </section>
+
+            <section id="publications">
+                <h2>Selected Publications</h2>
+                <p class="section-links"><a href="publications/index.html">View All Publications</a></p>
+                
+                <div id="publication-list">
+                    <!-- Publication entries will be loaded from publications/featured.js -->
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <!-- <p class="section-links"><a href="projects/index.html">View All Projects</a></p>
+                
+                <div id="project-list">
+                    
+                </div> -->
+            </section>
+
+            <section id="teaching">
+                <h2>Teaching</h2>
+                <!-- <p class="section-links"><a href="teaching/index.html">View All Courses</a></p>
+                
+                <div id="course-list">
+                 
+                </div> -->
+            </section>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Ke Xing. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/publications.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/teaching.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>
