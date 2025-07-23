@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "TiP4GEN: Text to Immersive Panorama 4D Scene Generation",
             authors: "Ke Xing, Hanwen Liang, Dejia Xu, Yuyang Yin, Konstantinos N. Plataniotis, Yao Zhao, Yunchao Wei ",
-            venue: "ACMMM 2025 Conference Submission",
+            venue: "ACM Multimedia 2025",
             type: "conference",
             image:"./assets/images/tiP4GEN.png",
             // abstract: "In this work, we demonstrate a novel approach to...",
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "Beyond Wide-Angle Images: Unsupervised Video Portrait Correction via Spatiotemporal Diffusion Adaptation",
             authors: "Wenbo Nie, Lang Nie, Chunyu Lin, Jingwen Chen, KeXing, JiYuan Wang, Yao Zhao ",
-            venue: "ICCV 2025 Conference Submission",
+            venue: "AAAI 2026 Conference Submission",
             type: "conference",
             image:"./assets/images/STDA.png",
             
