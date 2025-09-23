@@ -1,67 +1,514 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
     <title>Ke Xing</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 移除 Playfair Display 字体，只保留基本的无衬线字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #546e7a;
+            --text-muted: #90a4ae;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --border-color: #e0e0e0;
+            --card-bg: #ffffff;
+            --section-bg: #fafafa;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b8b8b8;
+            --text-muted: #888888;
+            --accent-color: #64b5f6;
+            --accent-hover: #42a5f5;
+            --border-color: #333333;
+            --card-bg: #242424;
+            --section-bg: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 主题切换按钮 */
+        .theme-switch {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .theme-switch:hover {
+            background: var(--section-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .theme-switch i {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        /* 头部区域 */
+        header {
+            padding: 60px 0 40px;
+            background: var(--bg-color);
+        }
+
+        .profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 160px;
+            height: 160px;
+            border-radius: 16px;
+            object-fit: contain;
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-content h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .profile-content h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .contact-info {
+            margin-bottom: 24px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info i {
+            width: 16px;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            background: var(--section-bg);
+        }
+
+        /* 主要内容区域 */
+        main {
+            padding-bottom: 60px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        /* About 部分 */
+        #about p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        #about a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        #about a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* 研究领域 */
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 24px;
+        }
+
+        .research-area {
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .research-area:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .research-area h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        /* 出版物部分 */
+        .publication-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+            display: flex;
+            gap: 20px;
+        }
+
+        .publication-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-1px);
+        }
+
+        .publication-image {
+            flex-shrink: 0;
+            width: 120px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .publication-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .publication-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .publication-authors {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .publication-authors .me {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .publication-venue {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .publication-year {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .publication-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .publication-links a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        #publication-list {
+            /* 移除之前的占位符样式 */
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--section-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 60px 0 40px;
+            }
+
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .profile-image img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .profile-content h1 {
+                font-size: 2rem;
+            }
+
+            .research-areas {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin-bottom: 36px;
+            }
+
+            .publication-item {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .publication-image {
+                width: 100%;
+                height: 120px;
+            }
+
+            .theme-switch {
+                top: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .publication-item {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .publication-image {
+                width: 100%;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .profile-content h2 {
+                font-size: 1rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+        }
+
+        /* Font Awesome 样式 */
+        .fas,
+        .fab {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        .fab {
+            font-weight: 400;
+        }
+
+        /* 简单的 Font Awesome 图标替代 */
+        .fa-envelope::before {
+            content: '✉';
+        }
+
+        .fa-map-marker-alt::before {
+            content: '📍';
+        }
+
+        .fa-github::before {
+            content: '🔗';
+        }
+
+        .fa-graduation-cap::before {
+            content: '🎓';
+        }
+
+        .fa-file-alt::before {
+            content: '📄';
+        }
+
+        .fa-moon::before {
+            content: '🌙';
+        }
+
+        .fa-sun::before {
+            content: '☀️';
+        }
+    </style>
 </head>
+
 <body>
     <!-- 主题切换按钮 -->
     <div class="theme-switch" id="theme-switch">
         <i class="fas fa-moon"></i>
     </div>
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#teaching">Teaching</a></li>
-                
-            </ul>
-        </div>
-    </nav>
+
     <header>
         <div class="container">
             <div class="profile">
                 <div class="profile-image">
-                    <img src="assets/images/profile.jpg" alt="Profile Picture" id="profile-img">
+                    <img src="assets\images\profile.jpg" alt="Profile Picture" id="profile-img">
                 </div>
                 <div class="profile-content">
                     <h1>Ke Xing</h1>
-                    <h2>Bachelor's Candidate in C.S. • School of Computer Science & Technology • Beijing Jiaotong University</h2>
+                    <h2>PhD Student in C.S. • School of Computer Science & Technology • Beijing Jiaotong University</h2>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> 22281232@bjtu.edu.cn</p>
+                        <p><i class="fas fa-envelope"></i> kexing@bjtu.edu.cn</p>
                         <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/ke-xing" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                        <!-- <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a> -->
-                        <a href="assets/cv.pdf" target="_blank"><i class="fas fa-file-alt"></i> CV</a>
+                        <a href="https://github.com/ke-xing" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank"><i
+                                class="fas fa-graduation-cap"></i> Scholar</a>
+                        <a href="assets\cv.pdf" target="_blank"><i class="fas fa-file-alt"></i> CV</a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-
-
     <main>
         <div class="container">
             <section id="about">
                 <h2>About Me</h2>
-                <p>I'm Ke Xing, a third year undergraduate student majoring in CS from School of Computer Science & Technology, Beijing Jiaotong University.
-    My research interest includes 3D&4D computer vision, AIGC and Embodied AI. With the development of large language models and multimodal large models, the ability of AI is becoming more and more capable. However, limited by the training data of large models, the current ability of AI is still limited to text, pictures and audio, and the understanding and logical reasoning of the real physical world is still limited. Therefore, I hope to devote myself to improving the three-dimensional world understanding ability of AI in future research. Align the spatial information with the existing modalities. If possible, I would like to find a primitive representation of knowledge or concepts that is not limited to modalities in order to increase the intelligence awareness of AI.
-                I am very fortunate to be advised by Prof. Yunchao Wei of Wei Lab from School of Computer Science & Technology, Beijing Jiaotong University.</p>
+                <p>
+                    My name is Ke Xing, and I am a PhD student in Computer Science at the School of Computer Science
+                    & Technology, Beijing Jiaotong University.
+                    My research interests focus on 3D Vision, World Models, and Embodied AI.
+                    I am fortunate to be advised by
+                    <a href="https://scholar.google.com/citations?user=qL9Csv0AAAAJ&hl=zh-CN">Prof. Yunchao Wei</a>
+                    and <a href="https://scholar.google.com/citations?user=OEZ816YAAAAJ&hl=en">Prof. Xiaojie Jin</a>
+                    in the Wei Lab at the School of Computer Science & Technology, Beijing Jiaotong University.
+                    I am always open to long-term internship opportunities and welcome any chance to connect and
+                    exchange ideas.
+                    Feel free to get in touch with me!
+                </p>
             </section>
 
             <section id="research">
@@ -69,75 +516,125 @@
                 <div class="research-areas">
                     <div class="research-area">
                         <h3>3D Computer Vision</h3>
-
                     </div>
                     <div class="research-area">
                         <h3>Embodied AI</h3>
-
                     </div>
                     <div class="research-area">
-                        <h3>Generative AI</h3>
-
+                        <h3>Video Generation</h3>
                     </div>
                     <div class="research-area">
-                        <h3>Bioinformatics</h3>
-
+                        <h3>World Models</h3>
                     </div>
                 </div>
-            </section>
-
-            <section id="news">
-                <h2>News</h2>
-                <!-- <p class="section-links"><a href="news/index.html">View All News</a></p> -->
-                
-                <!-- <div id="news-list">
-               
-                </div> -->
             </section>
 
             <section id="publications">
-                <h2>Selected Publications</h2>
-                <p class="section-links"><a href="publications/index.html">View All Publications</a></p>
-                
+                <h2>Publications</h2>
                 <div id="publication-list">
-                    <!-- Publication entries will be loaded from publications/featured.js -->
+                    <div class="publication-item">
+                        <div class="publication-image">
+                            <img src="assets\images\tiP4GEN.png" alt="3D Point Cloud Visualization">
+                        </div>
+                        <div class="publication-content">
+                            <div class="publication-title">TiP4GEN: Text to Immersive Panorama 4D Scene Generation</div>
+                            <div class="publication-authors"><span class="me">Ke Xing</span>, Hanwen Liang, Dejia Xu,
+                                Yuyang
+                                Yin, Konstantinos N. Plataniotis, Yao Zhao, Yunchao Wei</div>
+                            <div class="publication-venue">ACM Multimedia 2025</div>
+                            <div class="publication-year">2025</div>
+                            <div class="publication-links">
+                                <a href="https://arxiv.org/abs/2508.12415" target="_blank">Paper</a>
+                                <a href="https://ke-xing.github.io/TiP4GEN/" target="_blank">Project</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="publication-image">
+                            <img src="assets\images\STDA.png" alt="Autonomous Robot Navigation">
+                        </div>
+                        <div class="publication-content">
+                            <div class="publication-title">Beyond Wide-Angle Images: Unsupervised Video Portrait
+                                Correction
+                                via Spatiotemporal Diffusion Adaptation
+                            </div>
+                            <div class="publication-authors">Wenbo Nie, Lang Nie, Chunyu Lin, Jingwen Chen, <span
+                                    class="me">Ke Xing</span>, JiYuan
+                                Wang, Yao Zhao</div>
+                            <div class="publication-venue">AAAI 2026 Submission
+                            </div>
+                            <div class="publication-year">2025</div>
+                            <div class="publication-links">
+                                <a href="https://arxiv.org/abs/2504.00401" target="_blank">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="publication-item">
+                        <div class="publication-image">
+                            <img src="assets\images\CommChem.png" alt="Video Generation and World Models">
+                        </div>
+                        <div class="publication-content">
+                            <div class="publication-title">Exploring the sequence-function space of microbial
+                                fucosidases
+                            </div>
+                            <div class="publication-authors">Ana Martínez Gascueña, Haiyang Wu, Rui Wang, C David Owen,
+                                Pedro J Hernando, Serena Monaco, Matthew Penner, <span class="me">Ke Xing</span>, et
+                                al.</div>
+                            <div class="publication-venue">Communications Chemistry 2024</div>
+                            <div class="publication-year">2024</div>
+                            <div class="publication-links">
+                                <a href="https://www.nature.com/articles/s42004-024-01212-4" target="_blank">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
-
-            <section id="projects">
-                <h2>Projects</h2>
-                <!-- <p class="section-links"><a href="projects/index.html">View All Projects</a></p>
-                
-                <div id="project-list">
-                    
-                </div> -->
-            </section>
-
-            <section id="teaching">
-                <h2>Teaching</h2>
-                <!-- <p class="section-links"><a href="teaching/index.html">View All Courses</a></p>
-                
-                <div id="course-list">
-                 
-                </div> -->
-            </section>
-
-
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Ke Xing. All rights reserved.</p>
-            <p>Last updated: <span id="last-updated"></span></p>
+            <p>&copy; 2025 Ke Xing. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated">September 2025</span></p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/publications.js"></script>
-    <script src="js/projects.js"></script>
-    <script src="js/teaching.js"></script>
-    <script src="js/news.js"></script>
-    <script src="js/theme.js"></script>
+    <script>
+        // 主题切换功能
+        const themeSwitch = document.getElementById('theme-switch');
+        const html = document.documentElement;
+
+        // 初始化主题
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeSwitch.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeSwitch.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // 设置当前年份
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 </body>
+
 </html>
