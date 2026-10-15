@@ -75,9 +75,8 @@ h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size
 .paper-links a { font-size: 11px; font-weight: 550; }
 .experience-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
 .experience-item { display: flex; align-items: flex-start; gap: 17px; }
-.company-mark { flex: 0 0 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; font-size: 19px; font-weight: 600; }
-.tencent { color: var(--blue); background: #f4f8ff; }
-.dzine { color: #4b4a75; background: #f7f6fb; }
+.company-mark { flex: 0 0 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: white; overflow: hidden; padding: 4px; }
+.company-mark img { width: 100%; height: 100%; object-fit: contain; }
 .experience-content { min-width: 0; }
 .experience-content h3 { font-size: 16px; line-height: 1.5; }
 .experience-content h3 a { color: var(--ink); }
