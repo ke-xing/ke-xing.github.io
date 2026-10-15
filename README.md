@@ -22,7 +22,7 @@ Then visit `http://127.0.0.1:52552/`.
 - Email, Google Scholar, GitHub, LinkedIn, and the existing CV.
 - All four publications and their existing paper/project/code links are retained.
 
-Internship dates are intentionally omitted: the public LinkedIn profile requires sign-in to reveal them, and other public sources disagree. Add dates only after confirmation. The linked original `assets/cv.pdf` is retained unchanged and may contain older information.
+Internship titles and dates were verified from the signed-in LinkedIn experience page on 2026-10-15: Tencent, Research Intern, May 2026–Present; Dzine AI, Research Intern, Aug 2025–Apr 2026. Research topics are supplied directly by Ke Xing. No team names or additional responsibilities are inferred. The linked original `assets/cv.pdf` is retained unchanged and may contain older information.
 
 ## Maintain
 
