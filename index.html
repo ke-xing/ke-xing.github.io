@@ -1,661 +1,138 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-    <title>Ke Xing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-primary: #2c3e50;
-            --text-secondary: #546e7a;
-            --text-muted: #90a4ae;
-            --accent-color: #3498db;
-            --accent-hover: #2980b9;
-            --border-color: #e0e0e0;
-            --card-bg: #ffffff;
-            --section-bg: #fafafa;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-primary: #e8e8e8;
-            --text-secondary: #b8b8b8;
-            --text-muted: #888888;
-            --accent-color: #64b5f6;
-            --accent-hover: #42a5f5;
-            --border-color: #333333;
-            --card-bg: #242424;
-            --section-bg: #1e1e1e;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* 主题切换按钮 */
-        .theme-switch {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .theme-switch:hover {
-            background: var(--section-bg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .theme-switch i {
-            color: var(--text-secondary);
-            font-size: 18px;
-        }
-
-        /* 头部区域 */
-        header {
-            padding: 60px 0 40px;
-            background: var(--bg-color);
-        }
-
-        .profile {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-        }
-
-        .profile-image {
-            flex-shrink: 0;
-        }
-
-        .profile-image img {
-            width: 160px;
-            height: 160px;
-            border-radius: 16px;
-            object-fit: contain;
-            border: 1px solid var(--border-color);
-        }
-
-        .profile-content h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .profile-content h2 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .contact-info {
-            margin-bottom: 24px;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .contact-info i {
-            width: 16px;
-            color: var(--text-muted);
-        }
-
-        .social-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-            background: var(--section-bg);
-        }
-
-        /* 主要内容区域 */
-        main {
-            padding-bottom: 60px;
-        }
-
-        section {
-            margin-bottom: 48px;
-        }
-
-        section h2 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            position: relative;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--accent-color);
-        }
-
-        /* About 部分 */
-        #about p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        #about a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        #about a:hover {
-            color: var(--accent-hover);
-        }
-
-        /* 研究领域 */
-        .research-areas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 24px;
-        }
-
-        .research-area {
-            padding: 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .research-area:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
-        }
-
-        .research-area h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            text-align: center;
-        }
-
-        /* 出版物部分 */
-        .publication-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 20px;
-            transition: all 0.2s ease;
-            display: flex;
-            gap: 20px;
-        }
-
-        .publication-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            transform: translateY(-1px);
-        }
-
-        .publication-image {
-            flex-shrink: 0;
-            width: 120px;
-            height: 80px;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .publication-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .publication-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .publication-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .publication-authors {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-
-        .publication-authors .me {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .publication-venue {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .publication-year {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-        }
-
-        .publication-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .publication-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 4px 8px;
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .publication-links a:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        #publication-list {
-            /* 移除之前的占位符样式 */
-        }
-
-        /* 页脚 */
-        footer {
-            background: var(--section-bg);
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-align: center;
-            margin-bottom: 4px;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            header {
-                padding: 60px 0 40px;
-            }
-
-            .profile {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 24px;
-            }
-
-            .profile-image img {
-                width: 140px;
-                height: 140px;
-            }
-
-            .profile-content h1 {
-                font-size: 2rem;
-            }
-
-            .research-areas {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                margin-bottom: 36px;
-            }
-
-            .publication-item {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .publication-image {
-                width: 100%;
-                height: 120px;
-            }
-
-            .theme-switch {
-                top: 16px;
-                right: 16px;
-                width: 40px;
-                height: 40px;
-            }
-
-            .publication-item {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .publication-image {
-                width: 100%;
-                height: 120px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .profile-content h2 {
-                font-size: 1rem;
-            }
-
-            .social-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-        }
-
-        /* Font Awesome 样式 */
-        .fas,
-        .fab {
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-        }
-
-        .fab {
-            font-weight: 400;
-        }
-
-        /* 简单的 Font Awesome 图标替代 */
-        .fa-envelope::before {
-            content: '✉';
-        }
-
-        .fa-map-marker-alt::before {
-            content: '📍';
-        }
-
-        .fa-github::before {
-            content: '🔗';
-        }
-
-        .fa-graduation-cap::before {
-            content: '🎓';
-        }
-
-        .fa-file-alt::before {
-            content: '📄';
-        }
-
-        .fa-moon::before {
-            content: '🌙';
-        }
-
-        .fa-sun::before {
-            content: '☀️';
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ke Xing is a first-year Computer Science PhD student at Beijing Jiaotong University, advised by Xiaojie Jin. Research in video world models, video generation, and 3D vision.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Ke Xing | Video World Models">
+  <meta property="og:description" content="First-year PhD student at Beijing Jiaotong University. Video world models, video generation, and 3D vision.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ke-xing.github.io/">
+  <meta property="og:image" content="https://ke-xing.github.io/assets/images/profile.jpg">
+  <link rel="canonical" href="https://ke-xing.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>Ke Xing | Video World Models</title>
 </head>
-
 <body>
-    <!-- 主题切换按钮 -->
-    <div class="theme-switch" id="theme-switch">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <header>
-        <div class="container">
-            <div class="profile">
-                <div class="profile-image">
-                    <img src="assets\images\profile.jpg" alt="Profile Picture" id="profile-img">
-                </div>
-                <div class="profile-content">
-                    <h1>Ke Xing</h1>
-                    <h2>PhD Student in C.S. • Beijing Jiaotong University</h2>
-                    <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> kexing@bjtu.edu.cn</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/ke-xing" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank"><i
-                                class="fas fa-graduation-cap"></i> Scholar</a>
-                        <a href="assets\cv.pdf" target="_blank"><i class="fas fa-file-alt"></i> CV</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#about" aria-label="Ke Xing, home">Ke Xing<span class="wordmark-dot">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+      </nav>
     </header>
 
-    <main>
-        <div class="container">
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    My name is Ke Xing, and I am a PhD student in Computer Science at the School of Computer Science
-                    & Technology, Beijing Jiaotong University.
-                    My research interests focus on Video Generation, World Models, and 3D Vision.
-                    I am fortunate to be advised by
-                    <a href="https://scholar.google.com/citations?user=qL9Csv0AAAAJ&hl=zh-CN">Prof. Yunchao Wei</a>
-                    and <a href="https://scholar.google.com/citations?user=OEZ816YAAAAJ&hl=en">Prof. Xiaojie Jin</a>
-                    in the Wei Lab at the School of Computer Science & Technology, Beijing Jiaotong University.
-                    I am always open to long-term internship opportunities and welcome any chance to connect and
-                    exchange ideas.
-                    Feel free to get in touch with me!
-                </p>
-            </section>
-
-            <section id="research">
-                <h2>Research Interests</h2>
-                <div class="research-areas">
-                    <div class="research-area">
-                        <h3>3D Computer Vision</h3>
-                    </div>
-                    <div class="research-area">
-                        <h3>Embodied AI</h3>
-                    </div>
-                    <div class="research-area">
-                        <h3>Video Generation</h3>
-                    </div>
-                    <div class="research-area">
-                        <h3>World Models</h3>
-                    </div>
-                </div>
-            </section>
-
-            <section id="publications">
-                <h2>Publications</h2>
-                <div id="publication-list">
-                    <div class="publication-item">
-                        <div class="publication-image">
-                            <img src="assets\images\stereo.png" alt="3D Point Cloud Visualization">
-                        </div>
-                        <div class="publication-content">
-                            <div class="publication-title">StereoWorld: Geometry-Aware Monocular-to-Stereo Video
-                                Generation</div>
-                            <div class="publication-authors"><span class="me">Ke Xing</span>, Longfei Li, Xiaojie Jin,
-                                Yuyang Yin, Hanwen Liang, Guixun Luo, Chen Fang, Jue Wang, et al.</div>
-                            <div class="publication-venue">CVPR 2026</div>
-                            <div class="publication-year">2026</div>
-                            <div class="publication-links">
-                                <a href="https://arxiv.org/abs/2512.09363" target="_blank">Paper</a>
-                                <a href="https://ke-xing.github.io/StereoWorld/" target="_blank">Project</a>
-                                <a href="https://github.com/ke-xing/StereoWorldCode" target="_blank">Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="publication-item">
-                        <div class="publication-image">
-                            <img src="assets\images\tiP4GEN.png" alt="3D Point Cloud Visualization">
-                        </div>
-                        <div class="publication-content">
-                            <div class="publication-title">TiP4GEN: Text to Immersive Panorama 4D Scene Generation</div>
-                            <div class="publication-authors"><span class="me">Ke Xing</span>, Hanwen Liang, Dejia Xu,
-                                Yuyang
-                                Yin, Konstantinos N. Plataniotis, Yao Zhao, Yunchao Wei</div>
-                            <div class="publication-venue">ACM Multimedia 2025</div>
-                            <div class="publication-year">2025</div>
-                            <div class="publication-links">
-                                <a href="https://arxiv.org/abs/2508.12415" target="_blank">Paper</a>
-                                <a href="https://ke-xing.github.io/TiP4GEN/" target="_blank">Project</a>
-                                <a href="https://github.com/ke-xing/TiP4GENCode" target="_blank">Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication-item">
-                        <div class="publication-image">
-                            <img src="assets\images\STDA.png" alt="Autonomous Robot Navigation">
-                        </div>
-                        <div class="publication-content">
-                            <div class="publication-title">Beyond Wide-Angle Images: Unsupervised Video Portrait
-                                Correction
-                                via Spatiotemporal Diffusion Adaptation
-                            </div>
-                            <div class="publication-authors">Wenbo Nie, Lang Nie, Chunyu Lin, Jingwen Chen, <span
-                                    class="me">Ke Xing</span>, JiYuan
-                                Wang, Yao Zhao</div>
-                            <div class="publication-venue">AAAI 2026
-                            </div>
-                            <div class="publication-year">2025</div>
-                            <div class="publication-links">
-                                <a href="https://arxiv.org/abs/2504.00401" target="_blank">Paper</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="publication-item">
-                        <div class="publication-image">
-                            <img src="assets\images\CommChem.png" alt="Video Generation and World Models">
-                        </div>
-                        <div class="publication-content">
-                            <div class="publication-title">Exploring the sequence-function space of microbial
-                                fucosidases
-                            </div>
-                            <div class="publication-authors">Ana Martínez Gascueña, Haiyang Wu, Rui Wang, C David Owen,
-                                Pedro J Hernando, Serena Monaco, Matthew Penner, <span class="me">Ke Xing</span>, et
-                                al.</div>
-                            <div class="publication-venue">Communications Chemistry 2024</div>
-                            <div class="publication-year">2024</div>
-                            <div class="publication-links">
-                                <a href="https://www.nature.com/articles/s42004-024-01212-4" target="_blank">Paper</a>
-                                <a href="https://github.com/ke-xing/GH29BERT.git" target="_blank">Code</a>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-            </section>
+    <main id="main">
+      <section class="hero" id="about" aria-labelledby="name">
+        <div class="hero-copy">
+          <p class="eyebrow">Computer vision &amp; generative AI</p>
+          <h1 id="name">Ke Xing</h1>
+          <p class="position">First-year PhD Student in Computer Science</p>
+          <p class="affiliation">Beijing Jiaotong University · Beijing, China</p>
+          <div class="bio">
+            <p>I am a first-year PhD student at the School of Computer Science &amp; Technology, Beijing Jiaotong University, advised by <a href="https://scholar.google.com/citations?user=OEZ816YAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Prof. Xiaojie Jin</a>.</p>
+            <p>My current research focuses on <strong>video world models</strong>: learning to generate and model dynamic visual worlds. I am particularly interested in memory and persistent world states for long-horizon interactions.</p>
+            <p>Previously, I worked on geometry-aware stereoscopic video generation, panoramic image and video generation, and immersive 4D scene reconstruction. These experiences shape my interest in connecting video generation with spatial understanding and temporally consistent world modeling.</p>
+          </div>
+          <div class="profile-links" aria-label="Contact and academic profiles">
+            <a class="primary-link" href="mailto:kexing@bjtu.edu.cn">Email <span aria-hidden="true">↗</span></a>
+            <a href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/ke-xing" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/ke-xing-a3aab833b/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
+        <aside class="hero-aside" aria-label="Portrait and research focus">
+          <div class="portrait-frame"><img src="assets/images/profile.jpg" alt="Portrait of Ke Xing" width="240" height="280" fetchpriority="high"></div>
+          <div class="portrait-caption"><span class="caption-line" aria-hidden="true"></span>Ke Xing / Beijing</div>
+          <div class="focus-note"><span class="small-label">Current focus</span><p>Video world models</p><span>Memory · Interaction · Consistency</span></div>
+        </aside>
+      </section>
+
+      <section class="section research-section" id="research" aria-labelledby="research-title">
+        <div class="section-heading"><h2 id="research-title">Research interests</h2><span class="section-caption">From visual generation to dynamic worlds</span></div>
+        <div class="research-grid">
+          <article class="research-item featured">
+            <span class="research-number">01 / Current</span>
+            <h3>Video world models</h3>
+            <p>Interactive visual worlds with memory, persistent state, and long-horizon consistency.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-number">02</span>
+            <h3>Video generation</h3>
+            <p>Geometry-aware stereoscopic generation and spatially and temporally coherent visual synthesis.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-number">03</span>
+            <h3>3D &amp; immersive vision</h3>
+            <p>Panoramic generation, dynamic scene reconstruction, and immersive 4D environments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="publications" aria-labelledby="publications-title">
+        <div class="section-heading"><h2 id="publications-title">Publications</h2><a class="section-caption more-link" href="https://scholar.google.com/citations?user=aM94oHwAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a></div>
+        <div class="publication-list">
+          <article class="publication">
+            <a class="publication-image" href="https://ke-xing.github.io/StereoWorld/" target="_blank" rel="noopener noreferrer" aria-label="StereoWorld project"><img src="assets/images/stereo.png" alt="StereoWorld geometry-aware stereoscopic video generation overview" width="240" height="150" loading="lazy"></a>
+            <div class="publication-content">
+              <div class="publication-meta"><span class="venue">CVPR 2026</span><span class="topic">Stereo video generation</span></div>
+              <h3><a href="https://arxiv.org/abs/2512.09363" target="_blank" rel="noopener noreferrer">StereoWorld: Geometry-Aware Monocular-to-Stereo Video Generation</a></h3>
+              <p class="authors"><strong>Ke Xing</strong>, Longfei Li, Xiaojie Jin, Yuyang Yin, Hanwen Liang, Guixun Luo, Chen Fang, Jue Wang, et al.</p>
+              <p class="paper-summary">Geometry-aware generation of high-fidelity stereo videos from monocular inputs.</p>
+              <div class="paper-links"><a href="https://arxiv.org/abs/2512.09363" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://ke-xing.github.io/StereoWorld/" target="_blank" rel="noopener noreferrer">Project</a><a href="https://github.com/ke-xing/StereoWorldCode" target="_blank" rel="noopener noreferrer">Code</a></div>
+            </div>
+          </article>
+          <article class="publication">
+            <a class="publication-image" href="https://ke-xing.github.io/TiP4GEN/" target="_blank" rel="noopener noreferrer" aria-label="TiP4GEN project"><img src="assets/images/tiP4GEN.png" alt="TiP4GEN panoramic video generation and dynamic 4D scene reconstruction overview" width="240" height="150" loading="lazy"></a>
+            <div class="publication-content">
+              <div class="publication-meta"><span class="venue">ACM Multimedia 2025</span><span class="topic">Panoramic 4D generation</span></div>
+              <h3><a href="https://arxiv.org/abs/2508.12415" target="_blank" rel="noopener noreferrer">TiP4GEN: Text to Immersive Panorama 4D Scene Generation</a></h3>
+              <p class="authors"><strong>Ke Xing</strong>, Hanwen Liang, Dejia Xu, Yuyang Yin, Konstantinos N. Plataniotis, Yao Zhao, Yunchao Wei</p>
+              <p class="paper-summary">Text-driven panoramic video generation and geometry-aligned reconstruction of immersive dynamic scenes.</p>
+              <div class="paper-links"><a href="https://arxiv.org/abs/2508.12415" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://ke-xing.github.io/TiP4GEN/" target="_blank" rel="noopener noreferrer">Project</a><a href="https://github.com/ke-xing/TiP4GENCode" target="_blank" rel="noopener noreferrer">Code</a></div>
+            </div>
+          </article>
+          <article class="publication">
+            <a class="publication-image" href="https://arxiv.org/abs/2504.00401" target="_blank" rel="noopener noreferrer" aria-label="Video portrait correction paper"><img src="assets/images/STDA.png" alt="Wide-angle video portrait distortion correction method" width="240" height="150" loading="lazy"></a>
+            <div class="publication-content">
+              <div class="publication-meta"><span class="venue">AAAI 2026</span><span class="topic">Video portrait correction</span></div>
+              <h3><a href="https://arxiv.org/abs/2504.00401" target="_blank" rel="noopener noreferrer">Beyond Wide-Angle Images: Unsupervised Video Portrait Correction via Spatiotemporal Diffusion Adaptation</a></h3>
+              <p class="authors">Wenbo Nie, Lang Nie, Chunyu Lin, Jingwen Chen, <strong>Ke Xing</strong>, JiYuan Wang, Yao Zhao</p>
+              <p class="paper-summary">Diffusion-based portrait correction with spatial consistency and temporal adaptation.</p>
+              <div class="paper-links"><a href="https://arxiv.org/abs/2504.00401" target="_blank" rel="noopener noreferrer">Paper</a></div>
+            </div>
+          </article>
+          <article class="publication">
+            <a class="publication-image" href="https://www.nature.com/articles/s42004-024-01212-4" target="_blank" rel="noopener noreferrer" aria-label="Microbial fucosidases paper"><img src="assets/images/CommChem.png" alt="Exploring microbial fucosidase protein sequence-function relationships" width="240" height="150" loading="lazy"></a>
+            <div class="publication-content">
+              <div class="publication-meta"><span class="venue">Communications Chemistry 2024</span><span class="topic">Protein sequence modeling</span></div>
+              <h3><a href="https://www.nature.com/articles/s42004-024-01212-4" target="_blank" rel="noopener noreferrer">Exploring the sequence-function space of microbial fucosidases</a></h3>
+              <p class="authors">Ana Martínez Gascueña, Haiyang Wu, Rui Wang, C David Owen, Pedro J Hernando, Serena Monaco, Matthew Penner, <strong>Ke Xing</strong>, et al.</p>
+              <p class="paper-summary">Learning protein sequence representations to explore sequence-function relationships.</p>
+              <div class="paper-links"><a href="https://www.nature.com/articles/s42004-024-01212-4" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://github.com/ke-xing/GH29BERT" target="_blank" rel="noopener noreferrer">Code</a></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading"><h2 id="experience-title">Research experience</h2><span class="section-caption">Industry research internships</span></div>
+        <div class="experience-list">
+          <article class="experience-item"><div class="company-mark tencent" aria-hidden="true">T</div><div class="experience-content"><h3><a href="https://www.tencent.com/en-us/" target="_blank" rel="noopener noreferrer">Tencent</a></h3><p class="role">Research Intern</p><p>Research on video world models.</p><div class="experience-tags"><span>Video world models</span></div></div></article>
+          <article class="experience-item"><div class="company-mark dzine" aria-hidden="true">D</div><div class="experience-content"><h3><a href="https://www.dzine.ai/" target="_blank" rel="noopener noreferrer">Dzine</a></h3><p class="role">Research Intern</p><p>Research on stereoscopic video generation and panoramic image generation for immersive visual content.</p><div class="experience-tags"><span>Stereoscopic video generation</span><span>Panoramic image generation</span></div></div></article>
+        </div>
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-title"><div><h2 id="contact-title">Let's connect.</h2><p>I welcome conversations and research collaborations on video world models, video generation, and 3D vision.</p></div><a href="mailto:kexing@bjtu.edu.cn">kexing@bjtu.edu.cn <span aria-hidden="true">↗</span></a></section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ke Xing. All rights reserved.</p>
-            <p>Last updated: <span id="last-updated">September 2025</span></p>
-        </div>
-    </footer>
-
-    <script>
-        // 主题切换功能
-        const themeSwitch = document.getElementById('theme-switch');
-        const html = document.documentElement;
-
-        // 初始化主题
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeSwitch.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-        function updateThemeIcon(theme) {
-            const icon = themeSwitch.querySelector('i');
-            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        }
-
-        // 设置当前年份
-        document.addEventListener('DOMContentLoaded', () => {
-            const yearElement = document.getElementById('year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <footer><p>© 2026 Ke Xing</p><p>Last updated: October 2026</p><a href="#about">Back to top <span aria-hidden="true">↑</span></a></footer>
+  </div>
 </body>
-
 </html>
