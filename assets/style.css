@@ -55,6 +55,8 @@ h2 { font-family: "Baskerville", "Iowan Old Style", Georgia, serif; font-size: 3
 .paper-links { display: flex; flex-wrap: wrap; gap: 21px; margin-top: 14px; }
 .paper-links a { font-size: 16px; border-bottom: 1px solid #a8b6a9; line-height: 1.6; }
 .paper-links a:hover { text-decoration: none; border-color: var(--accent); }
+.project-role { color: var(--muted); font-size: 15px; }
+.project-venue-sep { margin: 0 8px; color: var(--muted); }
 .experience-list { display: grid; gap: 32px; }
 .experience-item { display: flex; align-items: flex-start; gap: 24px; }
 .company-mark { flex: 0 0 58px; height: 58px; display: grid; place-items: center; background: white; padding: 5px; }
